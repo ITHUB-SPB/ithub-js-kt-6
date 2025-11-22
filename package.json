@@ -1,0 +1,11 @@
+{
+  "name": "ithub-js-kt-6",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "client": "serve src/"
+  },
+  "dependencies": {
+    "serve": "^14.2.5"
+  }
+}
