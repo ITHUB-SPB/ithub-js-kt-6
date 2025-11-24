@@ -1,7 +1,7 @@
-import { getBreeds } from "./api/breeds.js";
+import { getPosts } from "./api/breeds.js";
 import { getRandomFact } from "./api/facts.js";
 
-function renderBreeds(data) {
+function renderPosts(data) {
     const tableBodyElement =
         document.querySelector("#app tbody");
 
@@ -19,9 +19,9 @@ function renderBreeds(data) {
                 document.createElement("td");
 
             titleElement.textContent =
-                record.attributes.name;
+                record.title;
             descriptionElement.textContent =
-                record.attributes.description;
+                record.body;
 
             rowElement.append(
                 titleElement,
@@ -81,10 +81,10 @@ document
     .addEventListener("click", (e) => {
         const pageNumber = +e.target.value;
 
-        getBreeds(pageNumber)
+        getPosts(pageNumber)
             .then((data) => {
                 console.log(data);
-                renderBreeds(data.data);
+                getPosts(data);
                 renderPages(data.meta.pagination);
             })
             .catch(error => {
@@ -93,24 +93,24 @@ document
     });
 
 document.addEventListener("DOMContentLoaded", () => {
-    getBreeds()
+    getPosts()
         .then((data) => {
             console.log(data);
-            renderBreeds(data.data);
-            renderPages(data.meta.pagination);
+            renderPosts(data);
+            // renderPages(data.meta.pagination);
         })
         .catch(error => {
             renderAlert('', error.message)
         })
 
-    getRandomFact()
-        .then((data) => {
-            console.log(data);
-            renderFact(data.data[0].attributes.body)
-        })
-        .catch(error => {
-            renderAlert('', error.message)
-        })
+    // getRandomFact()
+    //     .then((data) => {
+    //         console.log(data);
+    //         renderFact(data.data[0].attributes.body)
+    //     })
+    //     .catch(error => {
+    //         renderAlert('', error.message)
+    //     })
 });
 
 // "https://dogapi.dog/api/v2/breeds?page[number]=2&page[size]=5";

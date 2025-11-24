@@ -3,9 +3,11 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "client": "serve src/"
+    "client": "serve src/",
+    "server": "json-server --port 3001 src/data.json"
   },
   "dependencies": {
+    "json-server": "^1.0.0-beta.3",
     "serve": "^14.2.5"
   }
 }
