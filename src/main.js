@@ -1,4 +1,5 @@
 import { getBreeds } from "./api/breeds.js";
+import { getRandomFact } from "./api/facts.js";
 
 function renderBreeds(data) {
     const tableBodyElement =
@@ -60,6 +61,11 @@ function renderPages(pagination) {
     );
 }
 
+function renderFact(text) {
+    const factElement = document.querySelector('#fact')
+    factElement.textContent = text
+}
+
 function renderAlert(title, message) {
     // TODO обрабатывать title
     const alertElement = document.querySelector('#alert')
@@ -80,7 +86,10 @@ document
                 console.log(data);
                 renderBreeds(data.data);
                 renderPages(data.meta.pagination);
-            });
+            })
+            .catch(error => {
+                renderAlert('', error.message)
+            })
     });
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -89,6 +98,15 @@ document.addEventListener("DOMContentLoaded", () => {
             console.log(data);
             renderBreeds(data.data);
             renderPages(data.meta.pagination);
+        })
+        .catch(error => {
+            renderAlert('', error.message)
+        })
+
+    getRandomFact()
+        .then((data) => {
+            console.log(data);
+            renderFact(data.data[0].attributes.body)
         })
         .catch(error => {
             renderAlert('', error.message)
