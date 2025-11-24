@@ -1,3 +1,5 @@
+import { getBreeds } from "./api/breeds.js";
+
 function renderBreeds(data) {
     const tableBodyElement =
         document.querySelector("#app tbody");
@@ -58,32 +60,39 @@ function renderPages(pagination) {
     );
 }
 
-function getBreeds(pageNumber = 1) {
-    return fetch(
-        `https://dogapi.dog/api/v2/breeds?page%5Bnumber%5D=${pageNumber}&page%5Bsize%5D=10`
-    )
-        .then((response) => {
-            if (!response.ok) {
-                throw new Error(
-                    "Response status is not OK"
-                );
-            }
-            return response.json();
-        })
-        .then((data) => {
-            console.log(data);
-            renderBreeds(data.data);
-            renderPages(data.meta.pagination);
-        });
+function renderAlert(title, message) {
+    // TODO обрабатывать title
+    const alertElement = document.querySelector('#alert')
+
+    const messageElement = alertElement.querySelector('p')
+    messageElement.textContent = message
+
+    alertElement.show()
 }
 
 document
     .querySelector("#pagination")
     .addEventListener("click", (e) => {
         const pageNumber = +e.target.value;
-        getBreeds(pageNumber);
+
+        getBreeds(pageNumber)
+            .then((data) => {
+                console.log(data);
+                renderBreeds(data.data);
+                renderPages(data.meta.pagination);
+            });
     });
 
-document.addEventListener("DOMContentLoaded", getBreeds);
+document.addEventListener("DOMContentLoaded", () => {
+    getBreeds()
+        .then((data) => {
+            console.log(data);
+            renderBreeds(data.data);
+            renderPages(data.meta.pagination);
+        })
+        .catch(error => {
+            renderAlert('', error.message)
+        })
+});
 
 // "https://dogapi.dog/api/v2/breeds?page[number]=2&page[size]=5";
