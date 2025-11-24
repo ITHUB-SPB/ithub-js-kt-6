@@ -1,6 +1,6 @@
-export function getBreeds(pageNumber = 1) {
+export function getPosts(pageNumber = 1) {
     return fetch(
-        `https://dogapi.dog/api/v2/breeds?page%5Bnumber%5D=${pageNumber}&page%5Bsize%5D=10`
+        `http://localhost:3001/posts`
     )
         .then((response) => {
             if (!response.ok) {
