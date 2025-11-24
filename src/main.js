@@ -61,11 +61,6 @@ function renderPages(pagination) {
     );
 }
 
-function renderFact(text) {
-    const factElement = document.querySelector('#fact')
-    factElement.textContent = text
-}
-
 function renderAlert(title, message) {
     // TODO обрабатывать title
     const alertElement = document.querySelector('#alert')
@@ -102,15 +97,6 @@ document.addEventListener("DOMContentLoaded", () => {
         .catch(error => {
             renderAlert('', error.message)
         })
-
-    // getRandomFact()
-    //     .then((data) => {
-    //         console.log(data);
-    //         renderFact(data.data[0].attributes.body)
-    //     })
-    //     .catch(error => {
-    //         renderAlert('', error.message)
-    //     })
 });
 
 // "https://dogapi.dog/api/v2/breeds?page[number]=2&page[size]=5";
