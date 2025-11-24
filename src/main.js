@@ -61,6 +61,11 @@ function renderPages(pagination) {
     );
 }
 
+function renderFact(text) {
+    const factElement = document.querySelector('#fact')
+    factElement.textContent = text
+}
+
 function renderAlert(title, message) {
     // TODO обрабатывать title
     const alertElement = document.querySelector('#alert')
@@ -93,6 +98,15 @@ document.addEventListener("DOMContentLoaded", () => {
             console.log(data);
             renderPosts(data);
             // renderPages(data.meta.pagination);
+        })
+        .catch(error => {
+            renderAlert('', error.message)
+        })
+
+    getRandomFact()
+        .then((data) => {
+            console.log(data);
+            renderFact(data.data[0].attributes.body)
         })
         .catch(error => {
             renderAlert('', error.message)
