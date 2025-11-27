@@ -1,4 +1,16 @@
 {
+  "products": [
+    {
+      "id": 1,
+      "title": "sunt aut facere repellat provident occaecati excepturi optio reprehenderit",
+      "marks": "[3,2,4,5]"
+    },
+    {
+      "id": 2,
+      "title": "sunt aut facere repellat provident occaecati excepturi optio reprehenderit",
+      "marks": "[1,2,3,5]"
+    }
+  ],
   "posts": [
     {
       "userId": 1,
