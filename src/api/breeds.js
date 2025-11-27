@@ -10,7 +10,7 @@ export function getPosts(pageNumber = 1) {
             }
 
             return response.json();
-        })
+        }) //n
         .catch(error => {
             console.error(error)
             throw new Error("Произошла ошибка. Попробуйте позже")
