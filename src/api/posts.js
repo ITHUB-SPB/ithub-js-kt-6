@@ -1,0 +1,37 @@
+export function getPosts(pageNumber = 1) {
+    return fetch(
+        `http://localhost:3001/posts`
+    )
+        .then((response) => {
+            if (!response.ok) {
+                throw new Error(
+                    "Response status is not OK"
+                );
+            }
+
+            return response.json();
+        })
+        .catch(error => {
+            console.error(error)
+            throw new Error("Произошла ошибка. Попробуйте позже")
+        })
+}
+
+export function getPost(postId) {
+    return fetch(
+        `http://localhost:3001/posts/${postId}`
+    )
+        .then((response) => {
+            if (!response.ok) {
+                throw new Error(
+                    "Response status is not OK"
+                );
+            }
+
+            return response.json();
+        })
+        .catch(error => {
+            console.error(error)
+            throw new Error("Произошла ошибка. Попробуйте позже")
+        })
+}
