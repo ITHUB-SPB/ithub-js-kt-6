@@ -1,6 +1,6 @@
-export function getRandomFact() {
+export function getComments(postId) {
     return fetch(
-        `https://dogapi.dog/api/v2/facts`
+        `http://localhost:3001/comments?postId=${postId}`
     )
         .then((response) => {
             if (!response.ok) {

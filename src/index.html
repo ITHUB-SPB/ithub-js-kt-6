@@ -1,35 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Dogs</title>
-    <link rel="stylesheet" href="global.css">
-</head>
+    <link rel="stylesheet" href="global.css" />
+  </head>
 
-<body>
+  <body>
     <main id="app">
-        <blockquote id="fact"></blockquote>
+      <blockquote id="fact"></blockquote>
 
-        <table>
-            <tr>
-                <th>Breed</th>
-                <th>Description</th>
-                <th>Actions</th>
-            </tr>
-            <tbody></tbody>
-        </table>
+      <table>
+        <thead>
+          <tr>
+            <th>Title</th>
+            <th>Content</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
 
-        <dialog id="alert">
-            <h4>Произошла ошибка</h4>
-            <p></p>
-            <button>Повторить</button>
-        </dialog>
+      <dialog id="alert">
+        <h4>Произошла ошибка</h4>
+        <p></p>
+        <button>Повторить</button>
+      </dialog>
 
-        <section id="pagination"></section>
+      <dialog id="modal">
+        <article>
+          <header>
+            <h2></h2>
+            <form method="dialog">
+              <button autofocus>X</button>
+            </form>
+            <address></address>
+          </header>
+          <p></p>
+          <footer>
+            <button id="load-comments">Load Comments</button>
+          </footer>
+        </article>
+      </dialog>
+
+      <section id="pagination"></section>
     </main>
     <script type="module" src="./main.js"></script>
-</body>
-
+  </body>
 </html>

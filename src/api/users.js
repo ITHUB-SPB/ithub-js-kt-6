@@ -1,6 +1,6 @@
-export function getPosts(pageNumber = 1) {
+export function getUser(userId) {
     return fetch(
-        `http://localhost:3001/posts`
+        `http://localhost:3001/users/${userId}`
     )
         .then((response) => {
             if (!response.ok) {
