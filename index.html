@@ -10,57 +10,31 @@
 
 <body>
   <main id="app">
+    <section id="filters">
+      <button id="filter-count" class="uk-btn uk-btn-sm uk-btn-secondary">Количество > 10</button>
+      <button id="filter-price" class="uk-btn uk-btn-sm uk-btn-secondary">Цена от 5000 до 6000</button>
+      <button id="filter-reset" class="uk-btn uk-btn-sm uk-btn-ghosted">Сбросить</button>
+    </section>
 
     <table id="products" class="uk-table uk-table-divider uk-table-hover uk-table-middle">
       <thead>
         <tr>
-          <th>Title
-            <button class="uk-button">
-              <uk-icon icon="arrow-down-wide-narrow"></uk-icon>
-            </button>
-            <button class="uk-button">
-              <uk-icon icon="arrow-up-wide-narrow"></uk-icon>
-            </button>
-          </th>
+          <th>Title</th>
           <th>
             Price
-            <button class="uk-button">
+            <button id="sort-enable" class="uk-btn uk-btn-xs">
               <uk-icon icon="arrow-down-wide-narrow"></uk-icon>
             </button>
-            <button class="uk-button">
-              <uk-icon icon="arrow-up-wide-narrow"></uk-icon>
+            <button id="sort-disable" class="uk-btn uk-btn-xs">
+              <uk-icon icon="list-restart"></uk-icon>
             </button>
           </th>
-          <th>
-            Count
-            <button class="uk-button">
-              <uk-icon icon="arrow-down-wide-narrow"></uk-icon>
-            </button>
-            <button class="uk-button">
-              <uk-icon icon="arrow-up-wide-narrow"></uk-icon>
-            </button>
-          </th>
+          <th>Count</th>
           <th>Marks</th>
         </tr>
       </thead>
       <tbody></tbody>
     </table>
-
-    <dialog id="modal">
-      <article>
-        <header>
-          <h2></h2>
-          <form method="dialog">
-            <button autofocus>X</button>
-          </form>
-          <address></address>
-        </header>
-        <p></p>
-        <footer>
-          <button id="load-comments">Load Comments</button>
-        </footer>
-      </article>
-    </dialog>
 
     <nav class="mt-4">
       <ul class="uk-pgn uk-pgn-default" id="pagination"></ul>
