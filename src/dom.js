@@ -5,13 +5,18 @@ export function renderTable(productsData) {
     tableBodyElement.append(
         ...productsData.map((productRecord) => {
             const rowElement = document.createElement("tr");
+            const sumMarks = productRecord.marks.reduce(
+                (acc, value) => acc + value
+            );
+            const avgMarks = sumMarks / productRecord.marks.length;
+
             rowElement.innerHTML = `
                 <td>${productRecord.title}</td>
                 <td>${productRecord.price}</td>
                 <td>${productRecord.count}</td>
 
                 <!-- TODO: заменить массив на средний балл и количество, например 3.4 (8) -->
-                <td>${JSON.stringify(productRecord.marks)}</td>
+                <td>${avgMarks.toFixed(2)} (${productRecord.marks.length})</td>
             `;
             return rowElement;
         })
