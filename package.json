@@ -4,8 +4,8 @@
   "scripts": {
     "client": "vite",
     "server": "json-server --port 3001 public/data.json",
-    "format": "prettier src/**/*.js",
-    "lint": "oxlint src/**/*.js"
+    "format": "prettier --write src/**/*.js",
+    "lint": "oxlint"
   },
   "dependencies": {
     "franken-ui": "^2.1.1",
