@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>products</title>
+</head>
+
+<body>
+  <main id="app">
+
+    <table id="products" class="uk-table uk-table-divider uk-table-hover uk-table-middle">
+      <thead>
+        <tr>
+          <th>Title
+            <button class="uk-button">
+              <uk-icon icon="arrow-down-wide-narrow"></uk-icon>
+            </button>
+            <button class="uk-button">
+              <uk-icon icon="arrow-up-wide-narrow"></uk-icon>
+            </button>
+          </th>
+          <th>
+            Price
+            <button class="uk-button">
+              <uk-icon icon="arrow-down-wide-narrow"></uk-icon>
+            </button>
+            <button class="uk-button">
+              <uk-icon icon="arrow-up-wide-narrow"></uk-icon>
+            </button>
+          </th>
+          <th>
+            Count
+            <button class="uk-button">
+              <uk-icon icon="arrow-down-wide-narrow"></uk-icon>
+            </button>
+            <button class="uk-button">
+              <uk-icon icon="arrow-up-wide-narrow"></uk-icon>
+            </button>
+          </th>
+          <th>Marks</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+
+    <dialog id="modal">
+      <article>
+        <header>
+          <h2></h2>
+          <form method="dialog">
+            <button autofocus>X</button>
+          </form>
+          <address></address>
+        </header>
+        <p></p>
+        <footer>
+          <button id="load-comments">Load Comments</button>
+        </footer>
+      </article>
+    </dialog>
+
+    <nav class="mt-4">
+      <ul class="uk-pgn uk-pgn-default" id="pagination"></ul>
+    </nav>
+  </main>
+
+  <script type="module" src="/src/main.js"></script>
+</body>
+
+</html>

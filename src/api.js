@@ -1,6 +1,6 @@
-export function getUser(userId) {
+export function getProducts({ paginate }) {
     return fetch(
-        `http://localhost:3001/users/${userId}`
+        `http://localhost:3001/products?_page=${paginate.page}`
     )
         .then((response) => {
             if (!response.ok) {
@@ -10,9 +10,5 @@ export function getUser(userId) {
             }
 
             return response.json();
-        })
-        .catch(error => {
-            console.error(error)
-            throw new Error("Произошла ошибка. Попробуйте позже")
         })
 }
