@@ -5,11 +5,33 @@ import "franken-ui/js/icon.iife";
 import { getProducts } from "./api.js";
 import { renderTable, renderPagination, showNotification } from "./dom.js";
 
-// TODO: создать объект state для всех фильтров, сортировок, чтобы устранить баг обновления при пагинации
-// возможно использовать URLSearchParams
+const state = {
+    pagination: { page: 1 },
+    filter: {},
+    sorter: {},
+};
 
-function render({ pagination, filter, sorter }) {
-    getProducts({ pagination, filter, sorter })
+function buildParams() {
+    const params = new URLSearchParams();
+
+    params.set("_page", state.pagination.page);
+
+    for (const [key, value] of Object.entries(state.filter)) {
+        params.set(key, value);
+    }
+
+    for (const [key, value] of Object.entries(state.sorter)) {
+        params.set(key, value);
+    }
+
+    return params.toString();
+}
+
+function render() {
+    const queryString = buildParams();
+    console.log(queryString);
+
+    getProducts(queryString)
         .then((data) => {
             renderTable(data.data);
             renderPagination({
@@ -23,33 +45,43 @@ function render({ pagination, filter, sorter }) {
 }
 
 document.querySelector("#pagination").addEventListener("click", (event) => {
-    render({ pagination: { page: event.target.textContent } });
+    const page = Number(event.target.textContent);
+
+    state.pagination.page = page;
+    render();
 });
 
 document.querySelector("#filter-price").addEventListener("click", () => {
-    render({
-        pagination: { page: 1 },
-        filter: "price_gte=5000&price_lte=6000",
-    });
+    state.pagination.page = 1;
+    state.filter.price_gte = 5000;
+    state.filter.price_lte = 6000;
+    render();
 });
 
 document.querySelector("#filter-count").addEventListener("click", () => {
-    render({ pagination: { page: 1 }, filter: "count_gte=10" });
+    state.pagination.page = 1;
+    state.filter.count_gte = 10;
+    render();
 });
 
 document.querySelector("#filter-reset").addEventListener("click", () => {
-    render({ pagination: { page: 1 } });
+    state.pagination.page = 1;
+    state.filter = {};
+    render();
 });
 
 document.querySelector("#sort-enable").addEventListener("click", () => {
-    render({ pagination: { page: 1 }, sorter: "_sort=-price" });
+    state.pagination.page = 1;
+    state.sorter._sort = "-price";
+    render();
 });
 
 document.querySelector("#sort-disable").addEventListener("click", () => {
-    render({ pagination: { page: 1 } });
-    // TODO*: сохранять фильтры
+    state.pagination.page = 1;
+    state.sorter = {};
+    render();
 });
 
 document.addEventListener("DOMContentLoaded", () => {
-    render({ pagination: { page: 1 } });
+    render();
 });

@@ -1,15 +1,7 @@
-export function getProducts({ pagination, filter, sorter }) {
-    let paginatedUrl = `http://localhost:3001/products?_page=${pagination.page}`;
+export function getProducts(queryString) {
+    let url = `http://localhost:3001/products?${queryString}`;
 
-    if (filter) {
-        paginatedUrl += `&${filter}`;
-    }
-
-    if (sorter) {
-        paginatedUrl += `&${sorter}`;
-    }
-
-    return fetch(paginatedUrl).then((response) => {
+    return fetch(url).then((response) => {
         if (!response.ok) {
             throw new Error("Response status is not OK");
         }
