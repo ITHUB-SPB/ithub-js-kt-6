@@ -21,19 +21,23 @@ function render({ pagination, filter, sorter }) {
 
 document.querySelector("#pagination").addEventListener("click", (event) => {
     render({ pagination: { page: event.target.textContent } });
+    // TODO: пофиксить сброс фильтров при пагинации
 });
 
-// document.querySelector("<кнопка фильтра по цене>").addEventListener("click", () => {
-//         // TODO: вызвать рендер с соответствующими пагинацией и фильтром
-//     });
+document.querySelector("#filter-price").addEventListener("click", () => {
+    render({
+        pagination: { page: 1 },
+        filter: "price_gte=5000&price_lte=6000",
+    });
+});
 
 document.querySelector("#filter-count").addEventListener("click", () => {
     render({ pagination: { page: 1 }, filter: "count_gte=10" });
 });
 
-// document.querySelector("<кнопка сброса>").addEventListener("click", () => {
-//     //TODO: вызвать рендер с параметрами по умолчанию (для сброса)
-// });
+document.querySelector("#filter-reset").addEventListener("click", () => {
+    render({ pagination: { page: 1 } });
+});
 
 // document.querySelector("<кнопка сортировки>").addEventListener("click", () => {
 //     //TODO: вызвать рендер с соответствующим параметром sorter

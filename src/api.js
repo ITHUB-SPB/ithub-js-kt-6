@@ -1,6 +1,9 @@
 export function getProducts({ pagination, filter, sorter }) {
     let paginatedUrl = `http://localhost:3001/products?_page=${pagination.page}`;
-    paginatedUrl += "&count_gte=10"; // TODO: замените на данные из фильтра
+
+    if (typeof filter !== undefined) {
+        paginatedUrl += `&${filter}`;
+    }
 
     // TODO: добавить обработку сортировки при sorter
 
