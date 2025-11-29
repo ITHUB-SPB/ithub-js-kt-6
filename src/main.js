@@ -5,6 +5,9 @@ import "franken-ui/js/icon.iife";
 import { getProducts } from "./api.js";
 import { renderTable, renderPagination, showNotification } from "./dom.js";
 
+// TODO: создать объект state для всех фильтров, сортировок, чтобы устранить баг обновления при пагинации
+// возможно использовать URLSearchParams
+
 function render({ pagination, filter, sorter }) {
     getProducts({ pagination, filter, sorter })
         .then((data) => {
@@ -21,7 +24,6 @@ function render({ pagination, filter, sorter }) {
 
 document.querySelector("#pagination").addEventListener("click", (event) => {
     render({ pagination: { page: event.target.textContent } });
-    // TODO: пофиксить сброс фильтров при пагинации
 });
 
 document.querySelector("#filter-price").addEventListener("click", () => {
@@ -39,9 +41,9 @@ document.querySelector("#filter-reset").addEventListener("click", () => {
     render({ pagination: { page: 1 } });
 });
 
-// document.querySelector("<кнопка сортировки>").addEventListener("click", () => {
-//     //TODO: вызвать рендер с соответствующим параметром sorter
-// });
+document.querySelector("#sort-enable").addEventListener("click", () => {
+    render({ pagination: { page: 1 }, sorter: "_sort=-price" });
+});
 
 document.querySelector("#sort-disable").addEventListener("click", () => {
     render({ pagination: { page: 1 } });
