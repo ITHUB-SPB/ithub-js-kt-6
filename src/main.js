@@ -20,8 +20,7 @@ function render({ pagination, filter, sorter }) {
 }
 
 document.querySelector("#pagination").addEventListener("click", (event) => {
-    // TODO: вызвать рендер со значением pagination: { page: "номер_страницы" }
-    // Tip: посмотрите на event.target, найдите в нем номер страницы
+    render({ pagination: { page: event.target.textContent } });
 });
 
 // document.querySelector("<кнопка фильтра по цене>").addEventListener("click", () => {
@@ -42,7 +41,7 @@ document.querySelector("#filter-count").addEventListener("click", () => {
 
 document.querySelector("#sort-disable").addEventListener("click", () => {
     render({ pagination: { page: 1 } });
-    // TODO*: сохранять фильтры 
+    // TODO*: сохранять фильтры
 });
 
 document.addEventListener("DOMContentLoaded", () => {
