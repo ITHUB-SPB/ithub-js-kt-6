@@ -25,15 +25,15 @@ export function renderTable(productsData) {
 
 export function renderPagination({ current, total }) {
     const pages = Array.from({ length: total }, (_, i) => i + 1);
-
     const paginationElement = document.querySelector("#pagination");
     paginationElement.innerHTML = "";
 
     paginationElement.append(
         ...pages.map((pageNumber) => {
             const buttonElement = document.createElement("button");
-            buttonElement.textContent = String(pageNumber);
-            buttonElement.className = `uk-btn uk-btn-sm ${pageNumber == current ? "uk-btn-ghosted" : "uk-btn-primary"}`;
+            buttonElement.textContent = pageNumber;
+
+            buttonElement.className = `uk-btn uk-btn-sm ${pageNumber === Number(current) ? "uk-btn-ghosted" : "uk-btn-primary"}`;
             return buttonElement;
         })
     );

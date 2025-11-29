@@ -35,7 +35,7 @@ function render() {
         .then((data) => {
             renderTable(data.data);
             renderPagination({
-                current: pagination.page,
+                current: Number(state.pagination.page),
                 total: data.pages,
             });
         })
