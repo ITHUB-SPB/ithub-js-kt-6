@@ -14,8 +14,6 @@ export function renderTable(productsData) {
                 <td>${productRecord.title}</td>
                 <td>${productRecord.price}</td>
                 <td>${productRecord.count}</td>
-
-                <!-- TODO: заменить массив на средний балл и количество, например 3.4 (8) -->
                 <td>${avgMarks.toFixed(2)} (${productRecord.marks.length})</td>
             `;
             return rowElement;
@@ -39,6 +37,7 @@ export function renderPagination({ current, total }) {
     );
 }
 
+// TODO: заюзать уведомления
 export function showNotification(message, type, timeout = 5000) {
     const iconTemplates = {
         error: "<span class='flex-none mr-2'><uk-icon icon='circle-slash'></uk-icon></span>",
