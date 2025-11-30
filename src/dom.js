@@ -5,13 +5,22 @@ export function renderTable(productsData) {
   tableBodyElement.append(
     ...productsData.map((productRecord) => {
       const rowElement = document.createElement("tr");
+
+      const marks = productRecord.marks || [];
+      let Mark = "—"; 
+      if (marks.length > 0) {
+        const sum = marks.reduce((count, grade) => count + grade, 0);
+        Mark = Math.round((sum / marks.length)*10)/10; 
+      }
+      const marksCellText = `${Mark} (${marks.length})`;
+
       rowElement.innerHTML = `
                 <td>${productRecord.title}</td>
                 <td>${productRecord.price}</td>
                 <td>${productRecord.count}</td>
 
                 <!-- TODO заменить массив на средний балл и количество, например 3.4 (8) -->
-                <td>${JSON.stringify(productRecord.marks)}</td>
+                <td>${marksCellText}</td>
             `;
       return rowElement;
     }),
