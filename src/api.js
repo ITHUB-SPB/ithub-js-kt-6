@@ -16,7 +16,18 @@ export function getProducts(queryString) {
             return new Promise((resolve) => {
                 showNotification("Loading", "pending");
                 setTimeout(() => {
+                    const rndNumber = Math.random();
+
+                    if (rndNumber < 0.2) {
+                        showNotification(
+                            "Backend said NO. Try to reload the page",
+                            "error"
+                        );
+                        throw new Error("Backend said NO >:(");
+                    }
+
                     showNotification("Completed", "success");
+
                     return resolve(data);
                 }, delay);
             });
