@@ -46,7 +46,7 @@ export function showNotification(message, type, timeout = 5000) {
 
   UIkit.notification({
     message: `<div class='flex items-center'>${iconTemplates[type] ?? ""}${message}</div>`,
-    pos: "top",
+    pos: "top-center",
     timeout,
   });
 }
