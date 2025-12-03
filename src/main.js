@@ -19,26 +19,41 @@ function render({ pagination, filter, sorter }) {
 document.querySelector("#pagination").addEventListener("click", (event) => {
   // TODO посмотрите на event.target, найдите в нем номер страницы
   // TODO вызовите рендер со значением pagination: { page: <номер_страницы> }
+  console.log(event.target.textContent)
+  render({pagination:{page: event.target.textContent}})
 });
 
 document
-  .querySelector("кнопка-фильтра-по-цене")
+  .querySelector("#filter-price") 
   ?.addEventListener("click", () => {
     // TODO вызвать рендер с соответствующими пагинацией и фильтром
-  });
+    render({
+  pagination: { page: 1},
+    filter:"price_gte=5000&price_lte=6000" 
+  })
+});
 
 document.querySelector("#filter-count").addEventListener("click", () => {
-  render({ pagination: { page: 1 }, filter: "count_gte=10" });
+  render({
+     pagination: { page: 1 }, filter: "count_gte=10" });
 });
 
 document
-  .querySelector("кнопка-сброса-фильтра")
+  .querySelector("#filter-reset")
   ?.addEventListener("click", () => {
-    // TODO вызвать рендер с параметрами по умолчанию (без фильтров)
+      // TODO вызвать рендер с параметрами по умолчанию (без фильтров)
+   render({pagination: {page: 1}})
   });
 
-document.querySelector("кнопка-сортировки")?.addEventListener("click", () => {
-  // TODO вызвать рендер с соответствующим параметром sorter
+document.querySelector("#sort-enable")?.addEventListener("click", () => {
+// TODO вызвать рендер с соответствующим параметром sorter
+  render({
+    pagination: { page: 1 },
+    sorter: {
+      field: "price",
+      order: "desc"
+    }
+  });
 });
 
 document.querySelector("#sort-disable")?.addEventListener("click", () => {
