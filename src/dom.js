@@ -14,7 +14,7 @@ export function renderTable(productsData) {
                 <td>${JSON.stringify(productRecord.marks)}</td>
             `;
       return rowElement;
-    }),
+    })
   );
 }
 
@@ -30,7 +30,7 @@ export function renderPagination({ current, total }) {
       buttonElement.textContent = String(pageNumber);
       buttonElement.className = `uk-btn uk-btn-sm ${pageNumber == current ? "uk-btn-ghosted" : "uk-btn-primary"}`;
       return buttonElement;
-    }),
+    })
   );
 }
 
