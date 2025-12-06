@@ -10,7 +10,7 @@ export function renderTable(productsData) {
                 <td>${productRecord.price}</td>
                 <td>${productRecord.count}</td>
 
-                <!-- TODO заменить массив на средний балл и количество, например 3.4 (8) -->
+                <!-- TODO заменить массив на средний балл и количество, например 3.4 (8) 1-->
                 <td>${JSON.stringify(productRecord.marks)}</td>
             `;
       return rowElement;
