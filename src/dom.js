@@ -1,3 +1,11 @@
+function calculateAverageMarks(marks) {
+  if (!marks || marks.length === 0) return "Нет оценок";
+  
+  const sum = marks.reduce((total, mark) => total + mark, 0);
+  const average = (sum / marks.length).toFixed(1);
+  return `${average} (${marks.length})`;
+}
+
 export function renderTable(productsData) {
   const tableBodyElement = document.querySelector("#products > tbody");
   tableBodyElement.innerHTML = "";
@@ -9,9 +17,7 @@ export function renderTable(productsData) {
                 <td>${productRecord.title}</td>
                 <td>${productRecord.price}</td>
                 <td>${productRecord.count}</td>
-
-                <!-- TODO заменить массив на средний балл и количество, например 3.4 (8) -->
-                <td>${JSON.stringify(productRecord.marks)}</td>
+                <td>${calculateAverageMarks(productRecord.marks)}</td>
             `;
       return rowElement;
     }),
