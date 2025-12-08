@@ -5,6 +5,12 @@ export function renderTable(productsData) {
   tableBodyElement.append(
     ...productsData.map((productRecord) => {
       const rowElement = document.createElement("tr");
+      const marks = productRecord.marks || [];
+      const count = marks.length;
+      const average = count > 0 
+        ? (marks.reduce((a, b) => a + b, 0) / count).toFixed(1) 
+        : 0;
+      
       rowElement.innerHTML = `
                 <td>${productRecord.title}</td>
                 <td>${productRecord.price}</td>
